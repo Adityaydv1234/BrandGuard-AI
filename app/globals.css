@@ -1,0 +1,43 @@
+@import '@fontsource-variable/public-sans';
+@import '@fontsource-variable/source-serif-4';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html, body { background: #F4F6F8; color: #17222E; }
+body { font-feature-settings: 'tnum' 0; -webkit-font-smoothing: antialiased; }
+::selection { background: #CFE0F3; }
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-md px-3.5 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2F5F92]; }
+  .btn-primary { @apply btn bg-ink text-white hover:bg-[#2A3846]; }
+  .btn-approve { @apply btn bg-stamp text-white hover:bg-[#174A39]; }
+  .btn-danger { @apply btn bg-white text-mark-high ring-1 ring-inset ring-[#E3B3AB] hover:bg-[#FBF1EF]; }
+  .btn-ghost { @apply btn bg-white text-ink ring-1 ring-inset ring-rule hover:bg-[#EEF1F4]; }
+  .btn-link { @apply text-sm font-medium text-mark-low underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#2F5F92] rounded; }
+  .field { @apply block w-full rounded-md border border-rule bg-white px-3 py-2 text-sm text-ink placeholder:text-[#8A95A3] focus:border-[#2F5F92] focus:outline-none focus:ring-2 focus:ring-[#2F5F92]/20; }
+  .label { @apply mb-1 block text-sm font-medium text-ink; }
+  .panel { @apply rounded-lg border border-rule bg-sheet; }
+  .muted { @apply text-graphite; }
+  .tab { @apply -mb-px border-b-2 border-transparent px-1 pb-2 text-sm font-medium text-graphite hover:text-ink; }
+  .tab-active { @apply border-ink text-ink; }
+}
+
+/* Proof marks: the draft is shown like a marked-up proof. */
+.mark { border-radius: 2px; padding: 0 1px; cursor: pointer; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.mark-high { background: #F8E3DF; text-decoration: underline wavy #B42A17; }
+.mark-medium { background: #F6EBD6; text-decoration: underline #99620C; }
+.mark-low { background: #E3ECF6; text-decoration: underline dotted #2F5F92; }
+.mark-info { background: #E1EFE6; text-decoration: underline #2B6E47; }
+.mark-resolved { background: transparent; text-decoration: underline dotted #A7B0BB; }
+.mark-active { outline: 2px solid #17222E; outline-offset: 1px; }
+.mark sup { font-family: 'Public Sans Variable', system-ui, sans-serif; font-size: 0.62em; font-weight: 700; margin-left: 1px; color: #4A5664; }
+
+.stamp { border: 2px solid #1E5B47; color: #1E5B47; transform: rotate(-1.5deg); }
+.stamp-void { border-color: #99620C; color: #99620C; transform: none; border-style: dashed; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .flash { animation: flash 900ms ease-out 1; }
+  @keyframes flash { 0% { background-color: #FFF3C4; } 100% { background-color: transparent; } }
+}
